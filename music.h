@@ -9,7 +9,7 @@ using namespace std;
 
 class music : public parent {
     public:
-        void printAll(void);
+        virtual void printAll(void);
         music();
         ~music();
         char *getPublisher();

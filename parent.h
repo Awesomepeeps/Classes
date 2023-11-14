@@ -8,7 +8,7 @@ using namespace std;
 
 class parent {
     public:
-        void printAll(void);
+        virtual void printAll(void);
         parent();
         ~parent();
         char *getTitle();

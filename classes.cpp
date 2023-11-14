@@ -1,3 +1,7 @@
+//  This is a program that allows you to make a database of videos, movies, and music, search through it, and then delete items from it
+//  Created by: Nikaansh S.
+//  Last Edited: 11/9/23
+
 #include <iostream>
 #include <cstring>
 #include <vector>
@@ -9,6 +13,7 @@
 using namespace std;
 
 int main (void) {
+    // Creates the vector as well as a bunch of varaibles to hold the inputs
     vector<parent*> database;
     char* input = new char(10);
     char* type = new char(10);
@@ -20,17 +25,18 @@ int main (void) {
     char* director = new char(80);
     int year = 0;
     char* search = new char(15);
+
+    // Starts loop to continuously run through the code
     while (true) {
         cout << "Do you want to add, search, delete, or quit?" << endl;
         cin >> input;
-        if (strcmp(input, "quit") == 0) {
+        if (strcmp(input, "quit") == 0) { // Checks if input is "quit" to end program
             break;
         }   
-        if (strcmp(input, "add") == 0) {
-            cout << "input/add: " << input << endl;
+        if (strcmp(input, "add") == 0) { // Checks if input is "add"
             cout << "What media type? (video, music, or movie)" << endl;
             cin >> type;
-            if (strcmp(type, "video") == 0) {
+            if (strcmp(type, "video") == 0) { // Adds a "video" to the vector database
                 video* store = new video();
                 cout << "What is the title?" << endl;
                 cin >> title;
@@ -46,7 +52,7 @@ int main (void) {
                 store->setRating(rating);
                 database.push_back(store);
             }
-            else if (strcmp(type, "music") == 0) {
+            else if (strcmp(type, "music") == 0) { // Adds a "music" to the vecor database
                 music* disk = new music();
                 cout << "What is the title?" << endl;
                 cin >> title;
@@ -65,7 +71,7 @@ int main (void) {
                 disk->setPublisher(publisher);
                 database.push_back(disk);
             }
-            else if (strcmp(type, "movie") == 0) {
+            else if (strcmp(type, "movie") == 0) { // Adds a "movie" to the vector database
                 movie* popcorn = new movie();
                 cout << "What is the title" << endl;
                 cin >> title;
@@ -85,34 +91,34 @@ int main (void) {
                 database.push_back(popcorn);
             }
         }
-        else if (strcmp(input, "search") == 0) {
-            cout << "title or year search" << endl;
+        else if (strcmp(input, "search") == 0) { // Checks if the user inputted "search"
+            cout << "Title or year search?" << endl;
             cin >> search;
-            cout << "This is search: " << search << endl;
-            if (strcmp(search, "title") == 0) {
+            if (strcmp(search, "title") == 0) { // Checks if they want to search by title
                 cout << "What is the title?" << endl;
                 cin >> title;
-                vector<parent*>::iterator iter = database.begin();
-                for(iter; iter < database.end(); iter++) {
-                    if (strcmp((*iter)->getTitle(), title) == 0) {
+                vector<parent*>::iterator iter = database.begin(); // Gets vector iterator
+                for(iter; iter < database.end(); iter++) { // Iterates through iterator
+                    if (strcmp((*iter)->getTitle(), title) == 0) { // Compares ith term's title to input by user
+                        cout << "\n" << endl;
                         (*iter)->printAll();
                     }
                 }
             }
-            else if (strcmp(search, "year") == 0) {
-                cout << "in year" << endl;
+            else if (strcmp(search, "year") == 0) { // Checks if they want to search by year
                 cout << "What is the year?" << endl;
                 cin >> year;
-                vector<parent*>::iterator iter = database.begin();
-                for(iter; iter < database.end(); iter++) {
-                    if ((*iter)->getYear() == year) {
+                vector<parent*>::iterator iter = database.begin(); // Gets vector iterator
+                for(iter; iter < database.end(); iter++) { // Iterates through iterator
+                    if ((*iter)->getYear() == year) { // Compates ith term's year to input
+                        cout << "\n" << endl;
                         (*iter)->printAll();
                     }
                 }
             }
         }
         else if (strcmp(input, "delete") == 0) {
-            cout << "title or year search" << endl;
+            cout << "Title or year delete?" << endl;
             cin >> search;
             if (strcmp(search, "title") == 0) {
                 cout << "What is the title?" << endl;
@@ -120,7 +126,7 @@ int main (void) {
                 vector<parent*>::iterator iter = database.begin();
                 for(iter; iter < database.end(); iter++) {
                     if (strcmp((*iter)->getTitle(), title) == 0) {
-                        (*iter)->printAll();
+                        database.erase(iter);
                     }
                 }
             }
@@ -130,11 +136,20 @@ int main (void) {
                 vector<parent*>::iterator iter = database.begin();
                 for(iter; iter < database.end(); iter++) {
                     if ((*iter)->getYear() == year) {
-                        (*iter)->printAll();
+                        database.erase(iter);
                     }
                 }
             }
         }
     }
+
+    //Frees all space
+    input.delete();
+    artist.delete();
+    director.delete();
+    search.delete();
+    type.delete();
+    title.delete();
+    pusblisher.delete();
     database.clear();
 }
