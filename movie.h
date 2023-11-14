@@ -9,7 +9,7 @@ using namespace std;
 
 class movie : public parent {
     public:
-        void printAll(void);
+        virtual void printAll(void);
         movie();
         ~movie();
         char *getDirector();
