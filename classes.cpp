@@ -144,12 +144,12 @@ int main (void) {
     }
 
     //Frees all space
-    input.delete();
-    artist.delete();
-    director.delete();
-    search.delete();
-    type.delete();
-    title.delete();
-    pusblisher.delete();
+    delete input;
+    delete artist;
+    delete director;
+    delete search;
+    delete type;
+    delete title;
+    delete publisher;
     database.clear();
 }
