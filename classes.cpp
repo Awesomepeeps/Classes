@@ -5,10 +5,10 @@
 #include <iostream>
 #include <cstring>
 #include <vector>
-#include "Parent.cpp"
-#include "Movie.cpp"
-#include "Video.cpp"
-#include "Music.cpp"
+#include "Parent.h"
+#include "Movie.h"
+#include "Video.h"
+#include "Music.h"
 
 using namespace std;
 
@@ -92,33 +92,35 @@ int main (void) {
             }
         }
         else if (strcmp(input, "search") == 0) { // Checks if the user inputted "search"
-            cout << "Title or year search?" << endl;
+            cout << "Title or year search (all lowercase)?" << endl;
             cin >> search;
             if (strcmp(search, "title") == 0) { // Checks if they want to search by title
                 cout << "What is the title?" << endl;
                 cin >> title;
+		cout << endl;
                 vector<parent*>::iterator iter = database.begin(); // Gets vector iterator
                 for(iter; iter < database.end(); iter++) { // Iterates through iterator
                     if (strcmp((*iter)->getTitle(), title) == 0) { // Compares ith term's title to input by user
-                        cout << "\n" << endl;
                         (*iter)->printAll();
+			cout << endl;
                     }
                 }
             }
             else if (strcmp(search, "year") == 0) { // Checks if they want to search by year
                 cout << "What is the year?" << endl;
                 cin >> year;
+		cout << endl;
                 vector<parent*>::iterator iter = database.begin(); // Gets vector iterator
                 for(iter; iter < database.end(); iter++) { // Iterates through iterator
                     if ((*iter)->getYear() == year) { // Compates ith term's year to input
-                        cout << "\n" << endl;
                         (*iter)->printAll();
+			cout << endl;
                     }
                 }
             }
         }
         else if (strcmp(input, "delete") == 0) {
-            cout << "Title or year delete?" << endl;
+            cout << "Title or year delete (all lowercase)?" << endl;
             cin >> search;
             if (strcmp(search, "title") == 0) {
                 cout << "What is the title?" << endl;

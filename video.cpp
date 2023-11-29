@@ -21,6 +21,7 @@ void video::setRating(int newRating) {
     rating = newRating;
 }
 void video::printAll(void) {
+    cout << "Meida type is video" << endl;
     cout << "Title is: " << title << endl;
     cout << "Year is: " << year << endl;
     cout << "Publisher is: " << publisher << endl;

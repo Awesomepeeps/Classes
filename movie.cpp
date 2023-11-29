@@ -26,6 +26,7 @@ void movie::setDuration(int newDuration) {
     duration = newDuration;
 }
 void movie::printAll(void) {
+    cout << "Media type is a movie" << endl;
     cout << "Title is: " << title << endl;
     cout << "Year is: " << year << endl;
     cout << "Director is: " << director << endl;

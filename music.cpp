@@ -27,6 +27,7 @@ void music::setDuration(int newDuration) {
     duration = newDuration;
 }
 void music::printAll(void) {
+    cout << "Media type is music" << endl;
     cout << "Title is: " << title << endl;
     cout << "Year is: " << year << endl;
     cout << "Publisher is: " << publisher << endl;
